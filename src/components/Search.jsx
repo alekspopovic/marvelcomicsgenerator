@@ -2,11 +2,12 @@ import "../styles/Search.scss";
 import {useState } from "react";
 import md5 from "md5";
 import Characters from "./Characters";
+import Comics from "./Comics";
 
 export default function Search() {
-    const [characterName, setCharacterName] = useState("null");
-    const [characterData, setCharacterData] = useState("null");
-    const [comicData, setComicData] = useState("null");
+    const [characterName, setCharacterName] = useState(null);
+    const [characterData, setCharacterData] = useState(null);
+    const [comicData, setComicData] = useState(null);
 
     const publicKey = import.meta.env.VITE_PUBLIC_KEY;
     const privateKey = import.meta.env.VITE_PRIVATE_KEY;
@@ -85,7 +86,7 @@ export default function Search() {
     </form>
 
     {!comicData && characterData && characterData.results[0] && (
-        <Characters data={characterData.result} onClick={getComicData} />
+        <Characters data={characterData.results} onClick={getComicData} />
     
     )}
 
